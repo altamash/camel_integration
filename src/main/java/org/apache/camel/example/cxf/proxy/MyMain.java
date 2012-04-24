@@ -19,20 +19,39 @@ package org.apache.camel.example.cxf.proxy;
 import org.apache.camel.spring.Main;
 
 /**
- * A Main to let you easily start the application from a IDE.
- * Usually you can just right click and choose Run
- *
- * @version 
+ * A Main to let you easily start the application from a IDE. Usually you can
+ * just right click and choose Run
+ * 
+ * @version
  */
 public final class MyMain {
 
-    private MyMain() {
-        // to comply with check style
-    }
+	private MyMain() {
+		// to comply with check style
+	}
 
-    public static void main(String[] args) throws Exception {
-        Main main = new Main();
-        main.setApplicationContextUri("META-INF/spring/camel-config.xml");
-        main.start();
-    }
+	public static void main(String[] args) throws Exception {
+		 Main main = new Main();
+		 main.setApplicationContextUri("META-INF/spring/camel-config.xml");
+		 main.start();
+
+//		AbstractApplicationContext context;
+//
+//		context = new ClassPathXmlApplicationContext(
+//				new String[] { "META-INF/spring/camel-config.xml" });
+//		context.start();
+//
+//		CamelContext camel = (CamelContext) context.getBean("camelContext");
+//		RouteBuilder builder = new RouteBuilder() {
+//
+//			@Override
+//			public void configure() throws Exception {
+//				from("cxf:bean:reportIncident").process(new GetReOrderLevelProcessor());
+//			}
+//		};
+//
+////		 camel.addRoutes(builder);
+//		camel.start();
+
+	}
 }

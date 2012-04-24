@@ -51,11 +51,12 @@
                    address="http://localhost:${proxy.port}/stock/InventoryWSImpl"
                    endpointName="s:InventoryWS"
                    serviceName="s:InventoryWSImplService"
+                   serviceClass="com.veriqual.integration.webservice.InventoryWS"
                    wsdlURL="etc/InventoryWSImplService.wsdl"
                    xmlns:s="http://webservice.integration.veriqual.com/"/>
 
   <!-- this is the Camel route which proxies the real web service and forwards SOAP requests to it -->
-  <camelContext xmlns="http://camel.apache.org/schema/spring">
+  <camelContext id="camelContext" xmlns="http://camel.apache.org/schema/spring">
 
     <!-- property which contains port number -->
     <propertyPlaceholder id="properties" location="classpath:incident.properties,file:target/custom.properties"/>
@@ -66,6 +67,12 @@
     <route>
       <!-- CXF consumer using MESSAGE format -->
       <from uri="cxf:bean:reportIncident?dataFormat=MESSAGE"/>
+<!--       <choice> -->
+<!--         <when> -->
+<!--           <simple>${in.header.operationName} != 'getReorderLevel'</simple> -->
+<!--           <to uri="getReorderLevel"/> -->
+<!--         </when> -->
+<!--       </choice> -->
       <!-- log input received -->
       <to uri="log:input"/>
       <!-- enrich the input by ensure the incidentId parameter is set -->
@@ -73,8 +80,20 @@
       <!-- send proxied request to real web service -->
       <to ref="callRealWebService"/>
       <!-- log answer from real web service -->
-      <to uri="log:output"/>
+<!--       <to uri="log:output"/> -->
+      <to uri="getReorderLevel"/>
     </route>
+    
+<!--     <route> -->
+<!--       CXF consumer using MESSAGE format -->
+<!--       <from uri="callRealWebService"/> -->
+<!--       <choice> -->
+<!--         <when> -->
+<!--           <simple>${in.header.operationName} != 'getReorderLevel'</simple> -->
+<!--           <to uri="getReorderLevel"/> -->
+<!--         </when> -->
+<!--       </choice> -->
+<!--     </route> -->
 
   </camelContext>
   <bean id="getReorderLevel" class="org.apache.camel.example.cxf.proxy.GetReOrderLevelProcessor"/>
