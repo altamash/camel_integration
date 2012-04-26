@@ -19,7 +19,6 @@ package org.apache.camel.example.cxf.proxy;
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.cxf.common.message.CxfConstants;
-import org.apache.camel.spring.Main;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -40,7 +39,7 @@ public final class MyMain {
 		AbstractApplicationContext context;
 
 		context = new ClassPathXmlApplicationContext(
-				new String[] { "META-INF/spring/camel-config.xml" });
+				new String[] {"META-INF/spring/camel-config.xml"});
 		context.start();
 
 		CamelContext camel = (CamelContext) context.getBean("camelContext");
