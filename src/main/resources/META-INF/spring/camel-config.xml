@@ -47,14 +47,21 @@
   <bean id="enrichBean" class="org.apache.camel.example.cxf.proxy.EnrichBean"/>
 
   <!-- this is the CXF web service we use as the front end -->
-  <cxf:cxfEndpoint id="reportIncident"
+  <cxf:cxfEndpoint id="proxyWebService"
                    address="http://localhost:${proxy.port}/stock/InventoryWSImpl"
                    endpointName="s:InventoryWS"
                    serviceName="s:InventoryWSImplService"
                    serviceClass="com.veriqual.integration.webservice.InventoryWS"
                    wsdlURL="etc/InventoryWSImplService.wsdl"
                    xmlns:s="http://webservice.integration.veriqual.com/"/>
-
+  <cxf:cxfEndpoint id="webService"
+                   address="http://localhost:8080/stock/InventoryWSImpl"
+                   endpointName="s:InventoryWS"
+                   serviceName="s:InventoryWSImplService"
+                   serviceClass="com.veriqual.integration.webservice.InventoryWS"
+                   wsdlURL="etc/InventoryWSImplService.wsdl"
+                   xmlns:s="http://webservice.integration.veriqual.com/"/>
+  
   <!-- this is the Camel route which proxies the real web service and forwards SOAP requests to it -->
   <camelContext id="camelContext" xmlns="http://camel.apache.org/schema/spring">
 
@@ -62,41 +69,11 @@
     <propertyPlaceholder id="properties" location="classpath:incident.properties,file:target/custom.properties"/>
 
 <!--     <endpoint id="callRealWebService" uri="http://localhost:${real.port}/real-webservice?throwExceptionOnFailure=false"/> -->
-    <endpoint id="callRealWebService" uri="http://localhost:8080/stock/InventoryWSImpl"/>
-
-    <route>
-      <!-- CXF consumer using MESSAGE format -->
-      <from uri="cxf:bean:reportIncident?dataFormat=MESSAGE"/>
-<!--       <choice> -->
-<!--         <when> -->
-<!--           <simple>${in.header.operationName} != 'getReorderLevel'</simple> -->
-<!--           <to uri="getReorderLevel"/> -->
-<!--         </when> -->
-<!--       </choice> -->
-      <!-- log input received -->
-      <to uri="log:input"/>
-      <!-- enrich the input by ensure the incidentId parameter is set -->
-      <to uri="bean:enrichBean"/>
-      <!-- send proxied request to real web service -->
-      <to ref="callRealWebService"/>
-      <!-- log answer from real web service -->
-<!--       <to uri="log:output"/> -->
-      <to uri="getReorderLevel"/>
-    </route>
-    
-<!--     <route> -->
-<!--       CXF consumer using MESSAGE format -->
-<!--       <from uri="callRealWebService"/> -->
-<!--       <choice> -->
-<!--         <when> -->
-<!--           <simple>${in.header.operationName} != 'getReorderLevel'</simple> -->
-<!--           <to uri="getReorderLevel"/> -->
-<!--         </when> -->
-<!--       </choice> -->
-<!--     </route> -->
+<!--     <endpoint id="callRealWebService" uri="http://localhost:8080/stock/InventoryWSImpl"/> -->
 
   </camelContext>
   <bean id="getReorderLevel" class="org.apache.camel.example.cxf.proxy.GetReOrderLevelProcessor"/>
+  <bean id="getItemCount" class="org.apache.camel.example.cxf.proxy.GetItemCountProcessor"/>
 
 </beans>
 <!-- END SNIPPET: e1 -->

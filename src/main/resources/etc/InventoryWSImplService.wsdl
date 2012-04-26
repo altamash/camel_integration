@@ -172,7 +172,7 @@
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="InventoryWSImplService">
-<!--     <wsdl:port binding="tns:InventoryWSImplServiceSoapBinding" name="InventoryWS"> -->
+<!--     <wsdl:port binding="tns:InventoryWSImplServiceSoapBinding" name="InventoryWSImplPort"> -->
     <wsdl:port binding="tns:InventoryWSImplServiceSoapBinding" name="InventoryWS">
       <soap:address location="http://localhost:9080/stock/InventoryWSImpl"/>
     </wsdl:port>

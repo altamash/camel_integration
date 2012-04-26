@@ -16,7 +16,12 @@
  */
 package org.apache.camel.example.cxf.proxy;
 
+import org.apache.camel.CamelContext;
+import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.component.cxf.common.message.CxfConstants;
 import org.apache.camel.spring.Main;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * A Main to let you easily start the application from a IDE. Usually you can
@@ -31,27 +36,31 @@ public final class MyMain {
 	}
 
 	public static void main(String[] args) throws Exception {
-		 Main main = new Main();
-		 main.setApplicationContextUri("META-INF/spring/camel-config.xml");
-		 main.start();
 
-//		AbstractApplicationContext context;
-//
-//		context = new ClassPathXmlApplicationContext(
-//				new String[] { "META-INF/spring/camel-config.xml" });
-//		context.start();
-//
-//		CamelContext camel = (CamelContext) context.getBean("camelContext");
-//		RouteBuilder builder = new RouteBuilder() {
-//
-//			@Override
-//			public void configure() throws Exception {
-//				from("cxf:bean:reportIncident").process(new GetReOrderLevelProcessor());
-//			}
-//		};
-//
-////		 camel.addRoutes(builder);
-//		camel.start();
+		AbstractApplicationContext context;
+
+		context = new ClassPathXmlApplicationContext(
+				new String[] { "META-INF/spring/camel-config.xml" });
+		context.start();
+
+		CamelContext camel = (CamelContext) context.getBean("camelContext");
+		RouteBuilder builder = new RouteBuilder() {
+
+			@Override
+			public void configure() throws Exception {
+				from("cxf:bean:proxyWebService").to("cxf:bean:webService")
+					.choice()
+						.when(header(CxfConstants.OPERATION_NAME).isEqualTo("getReorderLevel"))
+							.log("starting processor GetReOrderLevelProcessor")
+							.to("getReorderLevel")
+						.when(header(CxfConstants.OPERATION_NAME).isEqualTo("getItemCount"))
+							.log("starting processor GetItemCountProcessor")
+							.to("getItemCount");
+			}
+		};
+
+		camel.addRoutes(builder);
+		camel.start();
 
 	}
 }
