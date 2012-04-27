@@ -127,6 +127,9 @@
                 <wsdlOption>
                   <wsdl>${basedir}/src/main/resources/etc/InventoryWSImplService.wsdl</wsdl>
                 </wsdlOption>
+                <wsdlOption>
+                  <wsdl>${basedir}/src/main/resources/etc/RequisitionImplService.wsdl</wsdl>
+                </wsdlOption>
               </wsdlOptions>
             </configuration>
             <goals>
