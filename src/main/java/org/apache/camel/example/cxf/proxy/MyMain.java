@@ -36,12 +36,7 @@ private MyMain() {
 							.to("getReorderLevel")
 						.when(header(CxfConstants.OPERATION_NAME).isEqualTo("getItemCount"))
 							.log("starting processor GetItemCountProcessor")
-							.to("getItemCount")
-						.when(header(CxfConstants.OPERATION_NAME).isEqualTo("reorder"))
-							.log("redirecting to requisition service")
-							.to("sendRequisition")
-							.to("cxf:bean:webReqService")
-								.log("starting processor GetItemCountProcessor");
+							.to("getItemCount");
 			}
 		};
 
