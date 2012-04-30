@@ -18,17 +18,11 @@ package org.apache.camel.example.cxf.proxy;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
-import org.apache.camel.ExchangePattern;
 import org.apache.camel.Processor;
 import org.apache.camel.component.cxf.common.message.CxfConstants;
-import org.apache.camel.impl.DefaultExchange;
-import org.apache.cxf.message.MessageContentsList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 public class InitiationProcessor implements Processor {

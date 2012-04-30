@@ -15,12 +15,8 @@
  */
 package org.apache.camel.example.cxf.proxy;
 
-import javax.xml.ws.Holder;
-
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.apache.camel.component.cxf.CxfOperationException;
-import org.apache.camel.component.cxf.common.message.CxfConstants;
 import org.apache.cxf.message.MessageContentsList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
