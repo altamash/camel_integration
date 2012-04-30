@@ -61,6 +61,13 @@
                    serviceClass="com.veriqual.integration.webservice.InventoryWS"
                    wsdlURL="etc/InventoryWSImplService.wsdl"
                    xmlns:s="http://webservice.integration.veriqual.com/"/>
+  <cxf:cxfEndpoint id="proxyWebReqService"
+                   address="http://localhost:${proxy.port}/requisition/RequisitionImpl"
+                   endpointName="s:RequisitionWS"
+                   serviceName="s:RequisitionImplService"
+                   serviceClass="com.veriqual.integration.webservice.RequisitionWS"
+                   wsdlURL="etc/RequisitionImplService.wsdl"
+                   xmlns:s="http://webservice.integration.veriqual.com/"/>
   <cxf:cxfEndpoint id="webReqService"
                    address="http://localhost:8080/requisition/RequisitionImpl"
                    endpointName="s:RequisitionWS"
@@ -74,7 +81,7 @@
 
     <!-- property which contains port number -->
     <propertyPlaceholder id="properties" location="classpath:incident.properties,file:target/custom.properties"/>
-
+	<template id="template"/>
 <!--     <endpoint id="callRealWebService" uri="http://localhost:${real.port}/real-webservice?throwExceptionOnFailure=false"/> -->
 <!--     <endpoint id="callRealWebService" uri="http://localhost:8080/stock/InventoryWSImpl"/> -->
 
@@ -82,5 +89,9 @@
   <bean id="getReorderLevel" class="org.apache.camel.example.cxf.proxy.GetReOrderLevelProcessor"/>
   <bean id="getItemCount" class="org.apache.camel.example.cxf.proxy.GetItemCountProcessor"/>
   <bean id="sendRequisition" class="org.apache.camel.example.cxf.proxy.SendRequisitionProcessor"/>
+  <bean id="reorder" class="org.apache.camel.example.cxf.proxy.ReorderProcessor">
+    <property name="producer" ref="template" />
+  </bean>
+  <bean id="initProcess" class="org.apache.camel.example.cxf.proxy.InitiationProcessor"/>  
 </beans>
 <!-- END SNIPPET: e1 -->

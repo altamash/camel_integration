@@ -31,6 +31,8 @@ public class SendRequisitionProcessor implements Processor {
 
     public void process(Exchange exchng) throws Exception {
     	Object a = exchng.getIn().getHeader(org.apache.camel.component.cxf.common.message.CxfConstants.OPERATION_NAME); 
+    	MessageContentsList msgList = (MessageContentsList)exchng.getIn().getBody();
+        log.info(a + " returned " + msgList.get(0));
     }
 
 }

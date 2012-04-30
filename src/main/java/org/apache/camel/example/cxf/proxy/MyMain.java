@@ -33,10 +33,18 @@ private MyMain() {
 					.choice()
 						.when(header(CxfConstants.OPERATION_NAME).isEqualTo("getReorderLevel"))
 							.log("starting processor GetReOrderLevelProcessor")
-							.to("getReorderLevel")
+							.to("getReorderLevel") // Processor bean
 						.when(header(CxfConstants.OPERATION_NAME).isEqualTo("getItemCount"))
 							.log("starting processor GetItemCountProcessor")
-							.to("getItemCount");
+							.to("getItemCount") // Processor bean
+						.when(header(CxfConstants.OPERATION_NAME).isEqualTo("reorder"))
+							.log("starting processor ReorderProcessor")
+							.to("reorder"); // Processor bean, may route to route2
+				from("cxf:bean:proxyWebReqService").to("cxf:bean:webReqService")
+					.choice()
+						.when(header(CxfConstants.OPERATION_NAME).isEqualTo("sendRequisition"))
+							.log("starting processor SendRequisitionProcessor")
+							.to("sendRequisition"); // Processor bean
 			}
 		};
 

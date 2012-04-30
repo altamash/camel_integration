@@ -22,7 +22,6 @@ import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.Processor;
-import org.apache.camel.ProducerTemplate;
 import org.apache.camel.component.cxf.common.message.CxfConstants;
 import org.apache.camel.impl.DefaultExchange;
 import org.apache.cxf.message.MessageContentsList;
@@ -32,14 +31,22 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
-public class GetItemCountProcessor implements Processor {
-    public static final Logger log = LoggerFactory.getLogger(GetItemCountProcessor.class);
+public class InitiationProcessor implements Processor {
+    public static final Logger log = LoggerFactory.getLogger(InitiationProcessor.class);
+
     public void process(Exchange exchng) throws Exception {
-    	Object a = exchng.getIn().getHeader(org.apache.camel.component.cxf.common.message.CxfConstants.OPERATION_NAME); 
-    	
-//      Object[] args =  exchng.getIn().getBody(Object[].class);
-      MessageContentsList msgList = (MessageContentsList)exchng.getIn().getBody();
-      log.info(a + " returned " + msgList.get(0));
+ 
+//      AbstractApplicationContext context;
+//      context = new ClassPathXmlApplicationContext(new String[] {"META-INF/spring/camel-config.xml"});
+//      Exchange senderExchange = new DefaultExchange((CamelContext) context.getBean("camelContext"), ExchangePattern.InOut);
+      final List<Integer> params = new ArrayList<Integer>();
+      // Prepare the request message for the camel-cxf procedure
+      params.add(10);
+      exchng.getIn().setBody(params);
+      exchng.getIn().setHeader(CxfConstants.OPERATION_NAME, "sendRequisitionResponse");
+      exchng.getIn().setHeader(CxfConstants.OPERATION_NAMESPACE, "http://webservice.integration.veriqual.com/");
+
+      
     }
 
 }
