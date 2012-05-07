@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Class-Path: maven-compiler-plugin-2.3.2.jar maven-plugin-api-2.0.6.jar
+  maven-artifact-2.0.6.jar plexus-utils-2.0.5.jar maven-core-2.0.6.jar
+  maven-settings-2.0.6.jar maven-model-2.0.6.jar maven-plugin-paramete
+ r-documenter-2.0.6.jar maven-profile-2.0.6.jar wagon-provider-api-1.0
+ -beta-2.jar maven-repository-metadata-2.0.6.jar maven-error-diagnosti
+ cs-2.0.6.jar maven-project-2.0.6.jar maven-artifact-manager-2.0.6.jar
+  maven-plugin-registry-2.0.6.jar maven-plugin-descriptor-2.0.6.jar ma
+ ven-monitor-2.0.6.jar maven-toolchain-1.0.jar plexus-compiler-api-1.8
+ .1.jar plexus-compiler-manager-1.8.1.jar plexus-compiler-javac-1.8.1.
+ jar
+

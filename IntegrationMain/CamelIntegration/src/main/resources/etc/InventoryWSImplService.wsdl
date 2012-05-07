@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="InventoryWSImplService" targetNamespace="http://webservice.integration.veriqual.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://webservice.integration.veriqual.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://webservice.integration.veriqual.com/" version="1.0" xmlns:tns="http://webservice.integration.veriqual.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="addItem" type="tns:addItem"/>
+<xs:element name="addItemResponse" type="tns:addItemResponse"/>
+<xs:element name="getItemCount" type="tns:getItemCount"/>
+<xs:element name="getItemCountResponse" type="tns:getItemCountResponse"/>
+<xs:element name="getReorderLevel" type="tns:getReorderLevel"/>
+<xs:element name="getReorderLevelResponse" type="tns:getReorderLevelResponse"/>
+<xs:element name="reorder" type="tns:reorder"/>
+<xs:element name="reorderResponse" type="tns:reorderResponse"/>
+<xs:element name="setReorderLevel" type="tns:setReorderLevel"/>
+<xs:element name="setReorderLevelResponse" type="tns:setReorderLevelResponse"/>
+<xs:complexType name="addItem">
+    <xs:sequence/>
+  </xs:complexType>
+<xs:complexType name="addItemResponse">
+    <xs:sequence/>
+  </xs:complexType>
+<xs:complexType name="getReorderLevel">
+    <xs:sequence/>
+  </xs:complexType>
+<xs:complexType name="getReorderLevelResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="reorder">
+    <xs:sequence/>
+  </xs:complexType>
+<xs:complexType name="reorderResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getItemCount">
+    <xs:sequence/>
+  </xs:complexType>
+<xs:complexType name="getItemCountResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="setReorderLevel">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="setReorderLevelResponse">
+    <xs:sequence/>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="setReorderLevelResponse">
+    <wsdl:part element="tns:setReorderLevelResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setReorderLevel">
+    <wsdl:part element="tns:setReorderLevel" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addItemResponse">
+    <wsdl:part element="tns:addItemResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getItemCountResponse">
+    <wsdl:part element="tns:getItemCountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reorderResponse">
+    <wsdl:part element="tns:reorderResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getItemCount">
+    <wsdl:part element="tns:getItemCount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reorder">
+    <wsdl:part element="tns:reorder" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addItem">
+    <wsdl:part element="tns:addItem" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getReorderLevelResponse">
+    <wsdl:part element="tns:getReorderLevelResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getReorderLevel">
+    <wsdl:part element="tns:getReorderLevel" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="InventoryWS">
+    <wsdl:operation name="addItem">
+      <wsdl:input message="tns:addItem" name="addItem">
+    </wsdl:input>
+      <wsdl:output message="tns:addItemResponse" name="addItemResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReorderLevel">
+      <wsdl:input message="tns:getReorderLevel" name="getReorderLevel">
+    </wsdl:input>
+      <wsdl:output message="tns:getReorderLevelResponse" name="getReorderLevelResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reorder">
+      <wsdl:input message="tns:reorder" name="reorder">
+    </wsdl:input>
+      <wsdl:output message="tns:reorderResponse" name="reorderResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getItemCount">
+      <wsdl:input message="tns:getItemCount" name="getItemCount">
+    </wsdl:input>
+      <wsdl:output message="tns:getItemCountResponse" name="getItemCountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setReorderLevel">
+      <wsdl:input message="tns:setReorderLevel" name="setReorderLevel">
+    </wsdl:input>
+      <wsdl:output message="tns:setReorderLevelResponse" name="setReorderLevelResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InventoryWSImplServiceSoapBinding" type="tns:InventoryWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addItem">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addItem">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addItemResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReorderLevel">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getReorderLevel">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getReorderLevelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reorder">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="reorder">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="reorderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getItemCount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getItemCount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getItemCountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setReorderLevel">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="setReorderLevel">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setReorderLevelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InventoryWSImplService">
+<!--     <wsdl:port binding="tns:InventoryWSImplServiceSoapBinding" name="InventoryWSImplPort"> -->
+    <wsdl:port binding="tns:InventoryWSImplServiceSoapBinding" name="InventoryWS">
+      <soap:address location="http://localhost:9080/stock/InventoryWSImpl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

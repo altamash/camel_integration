@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Class-Path: InventoryService.jar maven-compiler-plugin-2.3.2.jar maven
+ -plugin-api-2.0.6.jar maven-artifact-2.0.6.jar plexus-utils-2.0.5.jar
+  maven-core-2.0.6.jar maven-settings-2.0.6.jar maven-model-2.0.6.jar 
+ maven-plugin-parameter-documenter-2.0.6.jar maven-profile-2.0.6.jar w
+ agon-provider-api-1.0-beta-2.jar maven-repository-metadata-2.0.6.jar 
+ maven-error-diagnostics-2.0.6.jar maven-project-2.0.6.jar maven-artif
+ act-manager-2.0.6.jar maven-plugin-registry-2.0.6.jar maven-plugin-de
+ scriptor-2.0.6.jar maven-monitor-2.0.6.jar maven-toolchain-1.0.jar pl
+ exus-compiler-api-1.8.1.jar plexus-compiler-manager-1.8.1.jar plexus-
+ compiler-javac-1.8.1.jar
+

@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="RequisitionImplService" targetNamespace="http://webservice.integration.veriqual.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://webservice.integration.veriqual.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://webservice.integration.veriqual.com/" version="1.0" xmlns:tns="http://webservice.integration.veriqual.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="sendRequisition" type="tns:sendRequisition"/>
+<xs:element name="sendRequisitionResponse" type="tns:sendRequisitionResponse"/>
+<xs:complexType name="sendRequisition">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="sendRequisitionResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="sendRequisitionResponse">
+    <wsdl:part element="tns:sendRequisitionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendRequisition">
+    <wsdl:part element="tns:sendRequisition" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="RequisitionWS">
+    <wsdl:operation name="sendRequisition">
+      <wsdl:input message="tns:sendRequisition" name="sendRequisition">
+    </wsdl:input>
+      <wsdl:output message="tns:sendRequisitionResponse" name="sendRequisitionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RequisitionImplServiceSoapBinding" type="tns:RequisitionWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="sendRequisition">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sendRequisition">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendRequisitionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RequisitionImplService">
+<!--     <wsdl:port binding="tns:RequisitionImplServiceSoapBinding" name="RequisitionImplPort"> -->
+    <wsdl:port binding="tns:RequisitionImplServiceSoapBinding" name="RequisitionWS">
+      <soap:address location="http://localhost:8080/requisition/RequisitionImpl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

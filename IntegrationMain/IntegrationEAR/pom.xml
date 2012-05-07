@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<!-- <parent> -->
+	<!-- blabla -->
+	<!-- </parent> -->
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>IntegrationEAR</artifactId>
+	<groupId>com.veriqual.integration.ear</groupId>
+	<version>1.0</version>
+	<packaging>ear</packaging>
+
+	<dependencies>
+
+
+		<dependency>
+			<artifactId>RequisitionService</artifactId>
+			<groupId>com.veriqual.integration.webservice</groupId>
+			<version>1.0</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<artifactId>InventoryWebService</artifactId>
+			<groupId>com.veriqual.integration.webservice</groupId>
+			<version>1.0</version>
+			<type>war</type>
+		</dependency>
+<dependency>
+<artifactId>CamelIntegration</artifactId>
+<groupId>org.apache.camel.example.cxf.proxy</groupId>
+			<version>1.0</version>
+  <type>pom</type>
+</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<version>6</version>
+					<!-- <modules> -->
+
+					<!-- <ejbModule> -->
+					<!-- <artifactId>Asynchronous-utils-MDB</artifactId> -->
+					<!-- <groupId>blabla</groupId> -->
+					<!-- </ejbModule> -->
+
+					<!-- <webModule> -->
+					<!-- <groupId>blabla</groupId> -->
+					<!-- <artifactId>blabla-web</artifactId> -->
+					<!-- <contextRoot>/blabla-${blabla.release}</contextRoot> -->
+					<!-- </webModule> -->
+
+					<!-- <javaModule> -->
+					<!-- <groupId>blabla</groupId> -->
+					<!-- <artifactId>blabla-components</artifactId> -->
+					<!-- <includeInApplicationXml>true</includeInApplicationXml> -->
+					<!-- </javaModule> -->
+					<!-- </modules> -->
+
+					<!-- <jboss> -->
+					<!-- <version>7</version> -->
+					<!-- </jboss> -->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>
