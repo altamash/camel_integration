@@ -45,7 +45,7 @@ public class ReorderProcessor implements Processor {
 			String req = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"http://webservice.integration.veriqual.com/\">"
 					+ "<soapenv:Header/><soapenv:Body><web:sendRequisition><arg0>9</arg0></web:sendRequisition></soapenv:Body></soapenv:Envelope>";
 			template.requestBody(
-					"http://localhost:9080/requisition/RequisitionImpl", req,
+					"http://localhost:1101/RequisitionService/RequisitionImpl", req,
 					Boolean.class);
 		}
 	}
