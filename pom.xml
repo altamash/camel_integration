@@ -31,7 +31,7 @@
   <version>1.0</version>
   <name>Camel :: Example :: CXF :: Proxy</name>
   <description>An example which uses Camel to proxy a web service</description>
-  <packaging>pom</packaging>
+  <packaging>war</packaging>
 
   <properties>
     <camel.osgi.export.pkg>
@@ -73,6 +73,18 @@
       <artifactId>camel-cxf</artifactId>
       <version>${camel-version}</version>
     </dependency>
+    
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-servlet</artifactId>
+      <version>${camel-version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>3.0.6.RELEASE</version>
+    </dependency>
 
     <!-- cxf -->
     <!-- used by the real web service -->
@@ -101,10 +113,16 @@
     </dependency>
 
     <!-- cxf web container for unit testing -->
+<!--     <dependency> -->
+<!--       <groupId>org.apache.cxf</groupId> -->
+<!--       <artifactId>cxf-rt-transports-http-jetty</artifactId> -->
+<!--       <version>2.6.0</version> -->
+<!--     </dependency> -->
+
     <dependency>
       <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-transports-http-jetty</artifactId>
-      <version>2.6.0</version>
+      <artifactId>cxf-rt-transports-http</artifactId>
+      <version>2.3.0</version>
     </dependency>
 
     <dependency>
@@ -116,7 +134,7 @@
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-test</artifactId>
-      <version>${cxf-version}</version>
+      <version>${camel-version}</version>
       <scope>test</scope>
     </dependency>
 

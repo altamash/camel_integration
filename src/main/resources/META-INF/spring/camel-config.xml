@@ -47,34 +47,34 @@
   <bean id="enrichBean" class="org.apache.camel.example.cxf.proxy.EnrichBean"/>
 
   <!-- this is the CXF web service we use as the front end -->
-  <cxf:cxfEndpoint id="proxyWebService"
-                   address="http://localhost:1101/stock/InventoryWSImpl"
-                   endpointName="s:InventoryWS"
-                   serviceName="s:InventoryWSImplService"
-                   serviceClass="com.veriqual.integration.webservice.InventoryWS"
-                   wsdlURL="etc/InventoryWSImplService.wsdl"
-                   xmlns:s="http://webservice.integration.veriqual.com/"/>
-  <cxf:cxfEndpoint id="webService"
-                   address="http://localhost:8080/stock/InventoryWSImpl"
-                   endpointName="s:InventoryWS"
-                   serviceName="s:InventoryWSImplService"
-                   serviceClass="com.veriqual.integration.webservice.InventoryWS"
-                   wsdlURL="etc/InventoryWSImplService.wsdl"
-                   xmlns:s="http://webservice.integration.veriqual.com/"/>
-  <cxf:cxfEndpoint id="proxyWebReqService"
-                   address="http://localhost:1101/RequisitionService/RequisitionImpl"
-                   endpointName="s:RequisitionWS"
-                   serviceName="s:RequisitionImplService"
-                   serviceClass="com.veriqual.integration.webservice.RequisitionWS"
-                   wsdlURL="etc/RequisitionImplService.wsdl"
-                   xmlns:s="http://webservice.integration.veriqual.com/"/>
-  <cxf:cxfEndpoint id="webReqService"
-                   address="http://localhost:8080/RequisitionService/RequisitionImpl"
-                   endpointName="s:RequisitionWS"
-                   serviceName="s:RequisitionImplService"
-                   serviceClass="com.veriqual.integration.webservice.RequisitionWS"
-                   wsdlURL="etc/RequisitionImplService.wsdl"
-                   xmlns:s="http://webservice.integration.veriqual.com/"/>                 
+<!--   <cxf:cxfEndpoint id="proxyWebService" -->
+<!--                    address="http://localhost:1101/stock/InventoryWSImpl" -->
+<!--                    endpointName="s:InventoryWS" -->
+<!--                    serviceName="s:InventoryWSImplService" -->
+<!--                    serviceClass="com.veriqual.integration.webservice.InventoryWS" -->
+<!--                    wsdlURL="etc/InventoryWSImplService.wsdl" -->
+<!--                    xmlns:s="http://webservice.integration.veriqual.com/"/> -->
+<!--   <cxf:cxfEndpoint id="webService" -->
+<!--                    address="http://localhost:8080/stock/InventoryWSImpl" -->
+<!--                    endpointName="s:InventoryWS" -->
+<!--                    serviceName="s:InventoryWSImplService" -->
+<!--                    serviceClass="com.veriqual.integration.webservice.InventoryWS" -->
+<!--                    wsdlURL="etc/InventoryWSImplService.wsdl" -->
+<!--                    xmlns:s="http://webservice.integration.veriqual.com/"/> -->
+<!--   <cxf:cxfEndpoint id="proxyWebReqService" -->
+<!--                    address="http://localhost:1101/RequisitionService/RequisitionImpl" -->
+<!--                    endpointName="s:RequisitionWS" -->
+<!--                    serviceName="s:RequisitionImplService" -->
+<!--                    serviceClass="com.veriqual.integration.webservice.RequisitionWS" -->
+<!--                    wsdlURL="etc/RequisitionImplService.wsdl" -->
+<!--                    xmlns:s="http://webservice.integration.veriqual.com/"/> -->
+<!--   <cxf:cxfEndpoint id="webReqService" -->
+<!--                    address="http://localhost:8080/RequisitionService/RequisitionImpl" -->
+<!--                    endpointName="s:RequisitionWS" -->
+<!--                    serviceName="s:RequisitionImplService" -->
+<!--                    serviceClass="com.veriqual.integration.webservice.RequisitionWS" -->
+<!--                    wsdlURL="etc/RequisitionImplService.wsdl" -->
+<!--                    xmlns:s="http://webservice.integration.veriqual.com/"/>                  -->
   
   <!-- this is the Camel route which proxies the real web service and forwards SOAP requests to it -->
   <camelContext id="camelContext" xmlns="http://camel.apache.org/schema/spring">
